@@ -1,5 +1,5 @@
 name: '이슈 생성'
-description: '깃허브 이슈와 지라 작업을 생성합니다'
+description: '깃허브 이슈를 생성하고 지라와 연동합니다'
 labels: [feat]
 title: '이슈 이름을 작성해주세요'
 body:
