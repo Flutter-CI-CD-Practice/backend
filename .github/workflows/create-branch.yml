@@ -33,7 +33,7 @@ jobs:
           
           CLEAN_TITLE="$(echo ${ISSUE_TITLE} | sed 's/[^a-zA-Z0-9/_-]/-/g' | sed 's/ /-/g' | sed 's/--*/-/g')"
           
-          BRANCH_NAME="${GITHUB_ISSUE_NUMBER}/${TICKET_NUMBER}/${CLEAN_TITLE}"
+          BRANCH_NAME="${TICKET_NUMBER}/#${GITHUB_ISSUE_NUMBER}/${CLEAN_TITLE}"
          
           git checkout -b "${BRANCH_NAME}"
           git push origin "${BRANCH_NAME}"
