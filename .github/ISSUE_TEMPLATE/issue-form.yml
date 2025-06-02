@@ -1,6 +1,5 @@
 name: '이슈 생성'
 description: '깃허브 이슈를 생성하고 지라와 연동합니다'
-labels: [feat]
 title: '이슈 이름을 작성해주세요'
 body:
   - type: input
@@ -12,11 +11,22 @@ body:
     validations:
       required: true
 
+  - type: markdown
+    attributes:
+      value: |
+        |convention|purpose|
+        |:---|:---|
+        |Feat|새로운 기능 구현|
+        |Fix|버그 수정|
+        |Refactor|리팩토링|
+        |Hotfix|긴급 업데이트|
+
   - type: input
     id: branch
     attributes:
       label: '😸 Branch'
-      description: 'name/label/title 양식으로 브랜치명을 작성해주세요 (예) dodo/feature/home'
+      description: 'Convention/name/title 양식으로 브랜치명을 작성해주세요'
+      placeholder: 'Feat/dodo/home'
     validations:
       required: true
       
@@ -25,6 +35,7 @@ body:
     attributes:
       label: '🎨 Description'
       description: '이슈에 대해 간략히 설명해주세요'
+      placeholder: '어떤 기능을 구현하시나요?'
     validations:
       required: true
 
@@ -34,6 +45,6 @@ body:
       label: '🌽 Tasks'
       description: '이슈 구현에 필요한 하위 작업들을 남겨주세요'
       value: |
-        - 이곳에 지라 테스트 링크를 입력해주세요
+        - 
     validations:
       required: false
