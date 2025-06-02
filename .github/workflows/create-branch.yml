@@ -2,7 +2,7 @@ name: Create Branch and Connect Jira
 on:
   issues:
     types:
-      - opend
+      - opened
 
 jobs:
   create-branch:
