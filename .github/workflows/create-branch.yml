@@ -20,6 +20,11 @@ jobs:
         with:
           template-path: '.github/ISSUE_TEMPLATE/issue-form.yml'
 
+      - name: Log Issue Parser
+        run: |
+          echo 'Ticket Number: ${{ steps.issue-parser.outputs.__ticket }}'
+          echo 'Parsed JSON: ${{ steps.issue-parser.outputs.jsonString }}'
+
       - name: Create branch with Ticket number
         run: |
           ISSUE_NUMBER="${{ steps.issue-parser.outputs.issueparser__ticket }}"
