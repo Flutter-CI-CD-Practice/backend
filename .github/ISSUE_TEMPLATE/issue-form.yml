@@ -54,3 +54,5 @@ body:
       value: |
         - [ ] 담당자/라벨 설정했나요?
         - [ ] 브랜치 연결했나요?
+    validations:
+      required: false
