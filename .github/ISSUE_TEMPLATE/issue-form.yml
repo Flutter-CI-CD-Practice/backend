@@ -3,7 +3,7 @@ description: '깃허브 이슈를 생성하고 지라와 연동합니다'
 title: '이슈 이름을 작성해주세요'
 body:
   - type: input
-    id: parentKey
+    id: key
     attributes:
       label: '🎟️ Ticket Number'
       description: '연동할 Ticket Number를 입력해주세요'
