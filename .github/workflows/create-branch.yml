@@ -1,0 +1,29 @@
+name: Create Branch and Connect Jira
+on:
+  issues:
+    types:
+      - opend
+
+jobs:
+  create-branch:
+    name: Create Branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout develop code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          
+      - name: Parse issue
+        uses: stefanbuck/github-issue-praser@v3
+        id: parse
+        with:
+          template-path: '.github/ISSUE_TEMPLATE/issue-form.yml'
+
+      - name: Create branch with Ticket number
+        run: |
+          ISSUE_NUMBER="${{ steps.parse.outputs.key }}"
+          ISSUE_TITLE="${{ steps.parse.outputs.branch }}"
+          BRANCH_NAME="[${ISSUE_NUMBER}] $(echo ${ISSUE_TITLE} | sed 's/ /-/g')"
+          git checkout -b "${BRANCH_NAME}"
+          git push origin "${BRANCH_NAME}"
