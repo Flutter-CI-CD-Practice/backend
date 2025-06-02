@@ -21,6 +21,7 @@ body:
       required: true
 
   - type: markdown
+    id: checks
     attributes:
       value: |
         |convention|purpose|
