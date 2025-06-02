@@ -16,8 +16,7 @@ body:
     id: branch
     attributes:
       label: '😸 Branch'
-      description: 'name/label/title 양식으로 브랜치명을 작성해주세요
-      예) dodo/feature/home'
+      description: 'name/label/title 양식으로 브랜치명을 작성해주세요 (예) dodo/feature/home'
     validations:
       required: true
       
