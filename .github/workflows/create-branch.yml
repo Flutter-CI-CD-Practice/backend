@@ -14,16 +14,15 @@ jobs:
         with:
           ref: develop
           
-      - name: Parse issue
-        uses: stefanbuck/github-issue-praser@v3
-        id: parse
+      - uses: stefanbuck/github-issue-praser@v2
+        id: issue-parser
         with:
           template-path: '.github/ISSUE_TEMPLATE/issue-form.yml'
 
       - name: Create branch with Ticket number
         run: |
-          ISSUE_NUMBER="${{ steps.parse.outputs.key }}"
-          ISSUE_TITLE="${{ steps.parse.outputs.branch }}"
+          ISSUE_NUMBER="${{ steps.issue-parser.outputs.issueparser_key }}"
+          ISSUE_TITLE="${{ steps.issue-parser.outputs.issueparser_branch }}"
           BRANCH_NAME="[${ISSUE_NUMBER}] $(echo ${ISSUE_TITLE} | sed 's/ /-/g')"
           git checkout -b "${BRANCH_NAME}"
           git push origin "${BRANCH_NAME}"
