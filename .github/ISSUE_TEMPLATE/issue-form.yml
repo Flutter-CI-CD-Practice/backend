@@ -50,8 +50,11 @@ body:
     validations:
       required: true
 
-  - type: markdown
+  - type: textarea
+    id: checks
     attributes:
+      label: '👌 Checklist'
+      description: '이슈가 생성되면 꼭 확인해주세요'
       value: |
         - [ ] 담당자/라벨 설정했나요?
         - [ ] 브랜치 연결했나요?
