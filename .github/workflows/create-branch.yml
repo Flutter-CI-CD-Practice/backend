@@ -29,6 +29,11 @@ jobs:
         run: |
           ISSUE_NUMBER="${{ steps.issue-parser.outputs.issueparser__ticket_number }}"
           ISSUE_TITLE="${{ steps.issue-parser.outputs.issueparser__branch }}"
-          BRANCH_NAME="[${ISSUE_NUMBER}] $(echo ${ISSUE_TITLE} | sed 's/ /-/g')"
+          GITHUB_ISSUE_NUMBER="${{ github.event.issue.number }}"
+          
+          CLEAN_TITLE="$(echo ${ISSUE_TITLE} | sed 's/[^a-zA-Z0-9/_-]/-/g' | sed 's/ /-/g' | sed 's/--*/-/g')"
+          
+          BRANCH_NAME="${ISSUE_NUMBER}/${CLEAN_TITLE}-${GITHUB_ISSUE_NUMBER}"
+         
           git checkout -b "${BRANCH_NAME}"
           git push origin "${BRANCH_NAME}"
